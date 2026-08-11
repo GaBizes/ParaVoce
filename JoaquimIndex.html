@@ -1,0 +1,1250 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Para Joaquim 🏀</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+
+background:
+linear-gradient(
+180deg,
+#1b0d00,
+#ff7b00,
+#1b0d00
+);
+
+color:white;
+
+overflow-x:hidden;
+
+min-height:100vh;
+}
+
+/* ==========================
+ESTRELAS
+========================== */
+
+.stars{
+
+position:fixed;
+
+width:100%;
+height:100%;
+
+pointer-events:none;
+
+z-index:0;
+}
+
+.star{
+
+position:absolute;
+
+width:3px;
+height:3px;
+
+background:white;
+
+border-radius:50%;
+
+box-shadow:
+0 0 5px white,
+0 0 10px orange;
+
+animation:piscar 2s infinite;
+}
+
+@keyframes piscar{
+
+50%{
+opacity:.2;
+}
+}
+
+/* ==========================
+BOLAS DE BASQUETE
+========================== */
+
+.basketballs{
+
+position:fixed;
+
+width:100%;
+height:100%;
+
+pointer-events:none;
+
+z-index:0;
+overflow:hidden;
+}
+
+.ball{
+
+position:absolute;
+
+font-size:55px;
+
+opacity:.12;
+
+animation:flutuar linear infinite;
+}
+
+@keyframes flutuar{
+
+from{
+
+transform:
+translateY(120vh);
+}
+
+to{
+
+transform:
+translateY(-150px);
+}
+}
+
+/* ==========================
+TELA DE SENHA
+========================== */
+
+#login{
+
+min-height:100vh;
+
+display:flex;
+
+justify-content:center;
+align-items:center;
+
+padding:20px;
+
+position:relative;
+z-index:5;
+}
+
+.login-box{
+
+background:
+rgba(0,0,0,.55);
+
+padding:40px;
+
+border-radius:25px;
+
+max-width:700px;
+
+width:100%;
+
+text-align:center;
+
+border:2px solid orange;
+
+box-shadow:
+0 0 25px orange;
+}
+
+.login-box h1{
+
+font-size:2.3rem;
+
+margin-bottom:20px;
+
+color:#ffcf75;
+}
+
+.login-box p{
+
+line-height:1.8;
+margin-bottom:15px;
+}
+
+input{
+
+width:100%;
+
+padding:15px;
+
+border:none;
+
+border-radius:12px;
+
+margin-top:15px;
+
+font-size:1rem;
+}
+
+button{
+
+padding:15px 30px;
+
+border:none;
+
+border-radius:12px;
+
+cursor:pointer;
+
+font-size:1rem;
+
+font-weight:bold;
+
+margin-top:15px;
+
+transition:.3s;
+}
+
+button:hover{
+
+transform:scale(1.05);
+}
+
+.acessar{
+
+background:#ff9100;
+color:white;
+}
+
+.erro{
+
+margin-top:15px;
+
+color:#ffb1b1;
+}
+
+/* ==========================
+SITE
+========================== */
+
+#site{
+
+display:none;
+
+position:relative;
+z-index:5;
+}
+
+.container{
+
+width:90%;
+
+max-width:1200px;
+
+margin:auto;
+
+padding:40px 0;
+}
+
+.card{
+
+background:
+rgba(0,0,0,.55);
+
+border:2px solid orange;
+
+border-radius:25px;
+
+padding:30px;
+
+margin-bottom:35px;
+
+box-shadow:
+0 0 20px rgba(255,165,0,.5);
+}
+
+.center{
+
+text-align:center;
+}
+
+h1{
+
+color:#ffd18a;
+
+margin-bottom:15px;
+}
+
+h2{
+
+color:#ffd18a;
+
+margin-bottom:15px;
+}
+
+p{
+
+line-height:1.9;
+}
+
+img{
+
+max-width:300px;
+
+width:100%;
+
+border-radius:20px;
+
+border:3px solid orange;
+
+box-shadow:
+0 0 20px orange;
+}
+
+/* ==========================
+CAFÉ
+========================== */
+
+.botoes{
+
+margin-top:20px;
+}
+
+.sim{
+
+background:#2ecc71;
+color:white;
+}
+
+.nao{
+
+background:#e74c3c;
+color:white;
+}
+
+.resposta{
+
+margin-top:20px;
+
+font-size:1.1rem;
+
+color:#ffe2ae;
+}
+
+/* ==========================
+RESPONSIVO
+========================== */
+
+@media(max-width:768px){
+
+.login-box h1{
+
+font-size:1.8rem;
+}
+
+h1{
+
+font-size:1.8rem;
+}
+
+.card{
+
+padding:20px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="stars"></div>
+<div class="basketballs"></div>
+
+<!-- LOGIN -->
+
+<section id="login">
+
+<div class="login-box">
+
+<h1>
+🏀 Bem-vindo, Joaquim!
+</h1>
+
+<p>
+Para acessar o site você precisa de uma palavra-chave.
+</p>
+
+<p>
+É o nome de um esporte.
+</p>
+
+<p>
+Sem essa palavra-chave você não poderá acessá-lo.
+</p>
+
+<input
+type="text"
+id="senha"
+placeholder="Digite a palavra-chave">
+
+<br>
+
+<button
+class="acessar"
+onclick="entrar()">
+
+Acessar
+</button>
+
+<div
+class="erro"
+id="erro"></div>
+
+</div>
+
+</section>
+
+<!-- SITE -->
+
+<section id="site">
+
+<div class="container">
+
+<div class="card center">
+
+<h1>
+🏀 Parabéns, Joaquim!
+</h1>
+
+<p>
+Você conseguiu ter acesso ao site.
+</p>
+
+<br>
+
+<p>
+A criadora fez especialmente para você.
+</p>
+
+<br>
+
+<p>
+Se você gosta de ler,
+se prepare hahaha.
+</p>
+
+</div>
+
+<!-- CAFÉ -->
+
+<div class="card center">
+
+<img
+src="CoffeCat.jpeg"
+alt="Coffee Cat">
+
+<br><br>
+
+<h2>
+Antes de continuar a leitura...
+</h2>
+
+<p>
+Gostaria de um café? ☕
+</p>
+
+<div class="botoes">
+
+<button
+class="sim"
+onclick="cafeSim()">
+
+☕ Sim
+
+</button>
+
+<button
+class="nao"
+onclick="cafeNao()">
+
+😅 Não
+
+</button>
+
+</div>
+
+<div
+class="resposta"
+id="cafeResposta">
+
+</div>
+
+</div>
+
+<script>
+
+function entrar(){
+
+const senha =
+document
+.getElementById("senha")
+.value
+.trim()
+.toLowerCase();
+
+if(
+senha === "basquete"
+){
+
+document
+.getElementById("login")
+.style.display = "none";
+
+document
+.getElementById("site")
+.style.display = "block";
+
+}else{
+
+document
+.getElementById("erro")
+.innerHTML =
+"❌ Palavra-chave incorreta.";
+}
+}
+
+function cafeSim(){
+
+document
+.getElementById("cafeResposta")
+.innerHTML =
+"☕ Excelente escolha! Um café combina perfeitamente com uma boa leitura.";
+}
+
+function cafeNao(){
+
+document
+.getElementById("cafeResposta")
+.innerHTML =
+"😂 Tudo bem, mas eu tentei oferecer.";
+}
+
+/* ESTRELAS */
+
+const stars =
+document.querySelector(".stars");
+
+for(let i=0;i<180;i++){
+
+const star =
+document.createElement("div");
+
+star.classList.add("star");
+
+star.style.left =
+Math.random()*100 + "%";
+
+star.style.top =
+Math.random()*100 + "%";
+
+star.style.animationDelay =
+Math.random()*3 + "s";
+
+stars.appendChild(star);
+}
+
+/* BOLAS DE BASQUETE */
+
+const basket =
+document.querySelector(".basketballs");
+
+for(let i=0;i<25;i++){
+
+const ball =
+document.createElement("div");
+
+ball.classList.add("ball");
+
+ball.innerHTML="🏀";
+
+ball.style.left =
+Math.random()*100 + "%";
+
+ball.style.animationDuration =
+(12 + Math.random()*18) + "s";
+
+basket.appendChild(ball);
+}
+
+</script>
+
+</body>
+</html>
+
+<!-- =====================================
+     DESABAFO SINCERO
+===================================== -->
+
+<div class="card">
+
+    <div style="
+    display:flex;
+    flex-wrap:wrap;
+    gap:30px;
+    align-items:center;
+    justify-content:center;
+    ">
+
+        <img
+        src="GatinhoBaskteiro.jpeg"
+        alt="Gatinho Basketeiro">
+
+        <div style="
+        flex:1;
+        min-width:280px;
+        ">
+
+            <h1>
+                🏀 Desabafo sincero
+            </h1>
+
+            <p>
+                Queria agradecer profundamente por ter sua amizade em minha vida.
+            </p>
+
+            <br>
+
+            <p>
+                Apesar da gente nunca ter se encontrado pessoalmente,
+                conseguimos criar um laço muito forte mesmo sendo uma amizade virtual.
+            </p>
+
+            <br>
+
+            <p>
+                A gente fala de tudo.
+            </p>
+
+            <br>
+
+            <p>
+                Compartilha momentos da vida.
+            </p>
+
+            <br>
+
+            <p>
+                Compartilha preocupações.
+            </p>
+
+            <br>
+
+            <p>
+                Compartilha alegrias.
+            </p>
+
+            <br>
+
+            <p>
+                E sempre encontra um jeito de conversar.
+            </p>
+
+            <br>
+
+            <p>
+                Isso é confiança.
+            </p>
+
+            <br>
+
+            <p>
+                Também queria te agradecer por não ter me deixado para trás.
+            </p>
+
+            <br>
+
+            <p>
+                Porque eu sei que eu sumo.
+            </p>
+
+            <br>
+
+            <p>
+                Eu desapareço por um tempo.
+            </p>
+
+            <br>
+
+            <p>
+                E às vezes demoro muito para responder.
+            </p>
+
+            <br>
+
+            <p>
+                Durante muito tempo eu sempre corria atrás das minhas amizades.
+            </p>
+
+            <br>
+
+            <p>
+                E mesmo assim acabava sendo excluída.
+            </p>
+
+            <br>
+
+            <p>
+                Depois de um tempo,
+                me acostumei tanto com minha própria companhia
+                que comecei a ter receio de procurar as pessoas novamente.
+            </p>
+
+            <br>
+
+            <p>
+                Quando encontrei amizades verdadeiras,
+                aconteceu algo estranho.
+            </p>
+
+            <br>
+
+            <p>
+                Eu comecei a reproduzir algumas atitudes que fizeram comigo no passado.
+            </p>
+
+            <br>
+
+            <p>
+                É como um efeito reboot.
+            </p>
+
+            <br>
+
+            <p>
+                Eu tento mudar isso todos os dias.
+            </p>
+
+            <br>
+
+            <p>
+                Porque para mim pode ser difícil me tornar mais presente.
+            </p>
+
+            <br>
+
+            <p style="
+            color:#ffd18a;
+            font-weight:bold;
+            font-size:1.1rem;
+            ">
+                Mas sabe o que seria muito mais difícil?
+            </p>
+
+            <br>
+
+            <p style="
+            color:#ffd18a;
+            font-weight:bold;
+            font-size:1.15rem;
+            ">
+                Perder sua amizade.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- =====================================
+     SOBRE SUA PESSOA
+===================================== -->
+
+<div class="card">
+
+    <div style="
+    display:flex;
+    flex-wrap:wrap;
+    gap:30px;
+    align-items:center;
+    justify-content:center;
+    ">
+
+        <img
+        src="GatoBasketo.jpeg"
+        alt="Gato Basketo">
+
+        <div style="
+        flex:1;
+        min-width:280px;
+        ">
+
+            <h1>
+                🏀 Sobre sua pessoa
+            </h1>
+
+            <p>
+                Você é um cara que demonstra suas emoções.
+            </p>
+
+            <br>
+
+            <p>
+                E isso é algo raro hoje em dia.
+            </p>
+
+            <br>
+
+            <p>
+                Graças a Deus você não se deixou ser corrompido por esse mundo.
+            </p>
+
+            <br>
+
+            <p>
+                Você continua sendo sincero.
+            </p>
+
+            <br>
+
+            <p>
+                Simpático.
+            </p>
+
+            <br>
+
+            <p>
+                Compreensivo.
+            </p>
+
+            <br>
+
+            <p>
+                E está se tornando um homem maduro.
+            </p>
+
+            <br>
+
+            <p>
+                Está vendo como Deus muda as pessoas?
+            </p>
+
+            <br>
+
+            <p>
+                Além disso,
+                você é dedicado.
+            </p>
+
+            <br>
+
+            <p>
+                Você procura melhorar.
+            </p>
+
+            <br>
+
+            <p>
+                Você procura aprender.
+            </p>
+
+            <br>
+
+            <p>
+                E sempre tenta entender os outros.
+            </p>
+
+            <br>
+
+            <p>
+                Para mim,
+                você é como um irmão mais novo.
+            </p>
+
+            <br>
+
+            <p>
+                Alguém que eu quero levar para minha vida.
+            </p>
+
+            <br>
+
+            <p>
+                E que eu espero continuar acompanhando por muitos anos.
+            </p>
+
+            <br>
+
+            <p style="
+            color:#ffd18a;
+            font-weight:bold;
+            font-size:1.15rem;
+            ">
+                E se um dia eu puder te encontrar pessoalmente,
+                eu irei.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- =====================================
+     VIDA COM DEUS
+===================================== -->
+
+<div class="card">
+
+    <div style="
+    display:flex;
+    flex-wrap:wrap;
+    gap:30px;
+    align-items:center;
+    justify-content:center;
+    ">
+
+        <img
+        src="BatmanBiblia.jpeg"
+        alt="Batman Bíblia">
+
+        <div style="
+        flex:1;
+        min-width:280px;
+        ">
+
+            <h1>
+                📖 Vida com Deus
+            </h1>
+
+            <p>
+                Eu espero muito que você esteja fazendo seu devocional,
+                jejuando e orando.
+            </p>
+
+            <br>
+
+            <p>
+                Mantendo sua comunhão diária com Deus
+                e fazendo tudo para a glória dEle.
+            </p>
+
+            <br>
+
+            <p>
+                Sei que não é fácil lidar com as tentações deste mundo.
+            </p>
+
+            <br>
+
+            <p>
+                Todos nós enfrentamos desafios,
+                dificuldades e momentos de fraqueza.
+            </p>
+
+            <br>
+
+            <p>
+                Mas nunca esqueça que Deus continua sendo refúgio,
+                força e direção.
+            </p>
+
+            <br>
+
+            <p>
+                Quando estiver difícil,
+                busque apoio em Deus.
+            </p>
+
+            <br>
+
+            <p>
+                E também em pessoas instruídas na fé
+                que possam te orientar.
+            </p>
+
+            <br>
+
+            <p>
+                Somos uma família em Cristo.
+            </p>
+
+            <br>
+
+            <p>
+                E eu peço a Deus que Ele continue te abençoando:
+            </p>
+
+            <br>
+
+            <p>
+                📚 Nos seus estudos
+            </p>
+
+            <p>
+                ❤️ Na sua vida pessoal
+            </p>
+
+            <p>
+                🤝 Nas suas amizades
+            </p>
+
+            <p>
+                👨‍👩‍👦 Na sua família
+            </p>
+
+            <p>
+                ✨ E no seu interior
+            </p>
+
+            <br>
+
+            <p>
+                Eu desejo te ver no céu.
+            </p>
+
+            <br>
+
+            <p>
+                Desejo ver sua salvação.
+            </p>
+
+            <br>
+
+            <p style="
+            color:#ffd18a;
+            font-weight:bold;
+            ">
+                E espero que você nunca se perca neste mundo
+                que tantas vezes tenta nos afastar daquilo
+                que realmente importa.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- =====================================
+     CONSIDERAÇÕES FINAIS
+===================================== -->
+
+<div class="card">
+
+    <div style="
+    display:flex;
+    flex-wrap:wrap;
+    gap:30px;
+    align-items:center;
+    justify-content:center;
+    ">
+
+        <img
+        src="kobeBasketo.jpeg"
+        alt="Kobe Basketo">
+
+        <div style="
+        flex:1;
+        min-width:280px;
+        ">
+
+            <h1>
+                🏀 Considerações finais
+            </h1>
+
+            <p>
+                Talvez este não seja o site mais incrível do mundo.
+            </p>
+
+            <br>
+
+            <p>
+                Talvez ele tenha erros.
+            </p>
+
+            <br>
+
+            <p>
+                Talvez algumas partes tenham ficado simples.
+            </p>
+
+            <br>
+
+            <p>
+                E talvez existam pessoas que fariam algo muito melhor.
+            </p>
+
+            <br>
+
+            <p>
+                Mas a verdade é que eu queria fazer algo para você.
+            </p>
+
+            <br>
+
+            <p>
+                Algo que mostrasse o quanto sua amizade é importante para mim.
+            </p>
+
+            <br>
+
+            <p>
+                Algo feito por mim.
+            </p>
+
+            <br>
+
+            <p>
+                Com meu tempo.
+            </p>
+
+            <br>
+
+            <p>
+                Com minhas ideias.
+            </p>
+
+            <br>
+
+            <p>
+                E principalmente com carinho.
+            </p>
+
+            <br>
+
+            <p>
+                Obrigada por todas as conversas.
+            </p>
+
+            <br>
+
+            <p>
+                Pela paciência.
+            </p>
+
+            <br>
+
+            <p>
+                Pela compreensão.
+            </p>
+
+            <br>
+
+            <p>
+                E por continuar presente mesmo quando eu falho.
+            </p>
+
+            <br>
+
+            <p style="
+            color:#ffd18a;
+            font-weight:bold;
+            font-size:1.15rem;
+            ">
+                Sua amizade é muito especial para mim.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- =====================================
+     ENCERRAMENTO
+===================================== -->
+
+<div class="card center">
+
+    <img
+    src="GodAndSpartan.jpeg"
+    alt="God And Spartan"
+    style="
+    max-width:500px;
+    width:100%;
+    margin-bottom:25px;
+    ">
+
+    <h1>
+        ✝️ Encerramento
+    </h1>
+
+    <br>
+
+    <p>
+        E para finalizar este pequeno presente,
+        gostaria de deixar um versículo muito especial:
+    </p>
+
+    <br><br>
+
+    <p style="
+    color:#ffd18a;
+    font-size:1.2rem;
+    ">
+
+        <strong>
+        1 João 2:28
+        </strong>
+
+        <br><br>
+
+        <strong><i>
+        "Filhinhos, agora, pois, permanecei nele,
+        para que, quando ele se manifestar,
+        tenhamos confiança e dele não nos afastemos
+        envergonhados na sua vinda."
+        </i></strong>
+
+    </p>
+
+    <br><br>
+
+    <p>
+        Que Deus continue guiando seus passos.
+    </p>
+
+    <br>
+
+    <p>
+        Fortalecendo sua fé.
+    </p>
+
+    <br>
+
+    <p>
+        Abençoando seus sonhos.
+    </p>
+
+    <br>
+
+    <p>
+        E te ajudando a permanecer firme
+        em todos os momentos.
+    </p>
+
+    <br>
+
+    <p style="
+    color:#ffd18a;
+    font-size:1.2rem;
+    font-weight:bold;
+    ">
+        Obrigada por sua amizade.
+    </p>
+
+    <br>
+
+    <p style="
+    color:#ffddb0;
+    ">
+        Feito especialmente para Joaquim 🏀🧡
+    </p>
+
+</div>
